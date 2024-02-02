@@ -32,6 +32,8 @@ namespace CollectionViewLesson.ViewModels
             SelectedStudents = new ObservableCollection<Object>();
             IsRefreshing = false;
             ReadStudents();
+            Months = new ObservableCollection<Month>();
+            FillMonths();
         }
 
         private async void ReadStudents()
@@ -157,6 +159,63 @@ namespace CollectionViewLesson.ViewModels
             {
                 this.isRefreshing = value;
                 OnPropertyChanged();
+            }
+        }
+        #endregion
+
+        #region Picker
+        private ObservableCollection<Month> months;
+        public ObservableCollection<Month> Months
+        {
+            get
+            {
+                return this.months;
+            }
+            set
+            {
+                this.months = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Month selectedMonth;
+        public Month SelectedMonth
+        {
+            get
+            {
+                return this.selectedMonth;
+            }
+            set
+            {
+                this.selectedMonth = value;
+                OnPickerChanged();
+                OnPropertyChanged();
+            }
+        }
+
+        
+        private void OnPickerChanged()
+        {
+            ReadStudents();
+            if (SelectedMonth.Id != 0)
+            {
+                List<Student> tobeRemoved = Students.Where(s => s.BirthDate.Month != SelectedMonth.Id).ToList();
+                foreach (Student student in tobeRemoved)
+                {
+                    Students.Remove(student);
+                }
+            }
+            
+            
+        }
+
+        private void FillMonths()
+        {
+            Months.Add(new Month { Id = 0, Name = "All Months" });
+            for(int i= 1;  i <= 12; i++)
+            {
+                DateTime dateTime = new DateTime(2024, i, 1);
+                Months.Add(new Month { Id = i, Name = dateTime.ToString("MMMM")});
             }
         }
         #endregion
