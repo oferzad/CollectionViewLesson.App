@@ -64,6 +64,9 @@
 	  <MauiXaml Update="Views\StudentsWithContextMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\StudentsWithPickerViewxaml.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\StudentsWithRefresh.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
