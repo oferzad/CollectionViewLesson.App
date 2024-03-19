@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CollectionViewLesson.Views.StudentsView"
              Title="StudentsView">
+    <StackLayout>
+        <SearchBar Text="{Binding SearchText}"></SearchBar>
     <CollectionView ItemsSource="{Binding Students}"
-                ItemsLayout="VerticalList">
+                ItemsLayout="VerticalGrid, 1">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
@@ -33,4 +35,5 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
+    </StackLayout>
 </ContentPage>

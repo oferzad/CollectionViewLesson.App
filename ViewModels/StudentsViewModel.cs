@@ -25,6 +25,45 @@ namespace CollectionViewLesson.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private string searchText;
+        public string SearchText
+        {
+            get
+            {
+                return this.searchText;
+            }
+            set
+            {
+                this.searchText = value;
+                OnSearchTextChanged();
+                OnPropertyChanged();
+            }
+        }
+
+        private void OnSearchTextChanged()
+        {
+            ObservableCollection<Student> temp = new ObservableCollection<Student>();
+            ReadStudents();
+            if (!String.IsNullOrEmpty(SearchText))
+            {
+                foreach(Student st in this.Students)
+                {
+                    if (st.FirstName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) == -1)
+                    {
+                        temp.Add(st);
+                    }
+                }
+
+                foreach (Student st in temp)
+                {
+                    if (this.Students.Contains(st))
+                    {
+                        this.Students.Remove(st);
+                    }
+                }
+            }
+        }
         public StudentsViewModel()
         {
             students = new ObservableCollection<Student>();

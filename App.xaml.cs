@@ -8,6 +8,6 @@ public partial class App : Application
 		//MainPage = new Views.StudentsView();
 		//MainPage = new Views.StudentsWithSelection();
 		//MainPage = new Views.StudentsWithContextMenuView();
-        MainPage = new Views.StudentsWithRefresh();
+        MainPage = new Views.StudentsView();
 	}
 }

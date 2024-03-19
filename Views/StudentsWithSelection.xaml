@@ -22,7 +22,7 @@
         <CollectionView ItemsSource="{Binding Students}"
                 ItemsLayout="VerticalList" x:Name="theCollectionView" SelectedItems="{Binding SelectedStudents, Mode=TwoWay}"
                         SelectedItem="{Binding SelectedStudent}"
-                SelectionMode="Single" SelectionChangedCommand="{Binding SingleSelectCommand}">
+                SelectionMode="Multiple" SelectionChangedCommand="{Binding MultipleSelectCommand}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
